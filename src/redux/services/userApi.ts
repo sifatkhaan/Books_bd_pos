@@ -22,4 +22,7 @@ export const userApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery, useGetUserByIdQuery } = userApi;
+export const { 
+    useGetUsersQuery,
+    useGetUserByIdQuery
+     } = userApi;
