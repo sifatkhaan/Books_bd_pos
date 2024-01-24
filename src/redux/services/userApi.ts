@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 type User = {
   id: number;
   name: string;
-  email: number;
+  email: any;
 };
 
 export const userApi = createApi({

@@ -11,17 +11,17 @@ export default function Home() {
   const { isLoading, isFetching, data, error } = useGetUsersQuery(null);
 
   return (
-    <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
-      <div style={{ marginBottom: "4rem", textAlign: "center" }}>
-        <h4 style={{ marginBottom: 16 }}>{count}</h4>
-        <button onClick={() => dispatch(increment())}>increment</button>
-        <button
+    <main className="lg:text-gray-700 p-5 ms-auto me-auto max-w-6xl sm:text-red-500 md:text-green-500 bg-gray-100">
+      <div className="mb-16" style={{ textAlign: "center" }}>
+        <h1 className="text-6xl mb-4" >{count}</h1>
+        <button className="btn hover:bg-green-700 hover:text-white hover:border-none" onClick={() => dispatch(increment())}>increment</button>
+        <button className=" ms-10 me-10 btn hover:bg-gray-800 hover:text-white"
           onClick={() => dispatch(decrement())}
-          style={{ marginInline: 16 }}
+          
         >
           decrement
         </button>
-        <button onClick={() => dispatch(reset())}>reset</button>
+        <button className="font-semibold btn hover:bg-red-600 hover:text-white" onClick={() => dispatch(reset())}>reset</button>
       </div>
 
       {error ? (
@@ -29,24 +29,26 @@ export default function Home() {
       ) : isLoading || isFetching ? (
         <p>Loading...</p>
       ) : data ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr",
-            gap: 20,
-          }}
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-10"
+      
         >
           {data.map((user) => (
-            <div
+            <div className="card hover:shadow-lg"
               key={user.id}
-              style={{ border: "1px solid #ccc", textAlign: "center" }}
+              
             >
-              <img
+              <img className="h-44 w-32"
                 src={`https://robohash.org/${user.id}?set=set2&size=180x180`}
                 alt={user.name}
-                style={{ height: 180, width: 180 }}
+                
               />
-              <h3>{user.name}</h3>
+              <div className="m-3">
+              <span className="font-bold text-left">{user.name}</span>
+              <span className="block uppercase text-left text-sm">sku {user.id}</span>
+              </div>
+              <div className="badge">
+                <span>SL {user.id+1}</span>
+              </div>
             </div>
           ))}
         </div>
